@@ -2,11 +2,9 @@
 
 ## 📌 Proje Hakkında
 
-Bu proje, **Çanakkale'nin 2000–2025 yılları arasındaki sıcaklık ve yağış verilerinin istatistiksel yöntemler kullanılarak incelenmesini** amaçlamaktadır.
+Bu proje, **Çanakkale'nin 2000–2025 yılları arasındaki sıcaklık ve yağış verilerinin istatistiksel yöntemlerle incelenmesini** amaçlamaktadır.
 
-Çalışmada aylık iklim verileri kullanılarak yıllık ve mevsimsel değişimler, uzun dönemli trendler, hareketli ortalamalar, aykırı değerler ve sıcaklık ile yağış arasındaki ilişki analiz edilmiştir.
-
-Projenin temel amacı, iklim verilerini yalnızca görselleştirmek yerine **istatistiksel yöntemlerle yorumlamak ve uzun dönemli değişimleri ortaya koymaktır.**
+Aylık iklim verileri kullanılarak yıllık ve mevsimsel değişimler, trendler, hareketli ortalamalar, aykırı değerler ve sıcaklık ile yağış arasındaki ilişki analiz edilmiştir.
 
 ---
 
@@ -14,71 +12,45 @@ Projenin temel amacı, iklim verilerini yalnızca görselleştirmek yerine **ist
 
 Veriler **Copernicus Climate Change Service (C3S) – ERA5-Land** veri setinden elde edilmiştir.
 
-* **Konum:** Çanakkale, Türkiye
-* **Dönem:** 2000–2025
-* **Gözlem sayısı:** 312 aylık gözlem
-* **Değişkenler:**
-
-  * Sıcaklık
-  * Yağış
-* **Sıcaklık birimi:** °C
-* **Yağış birimi:** mm
+| Özellik         | Değer              |
+| --------------- | ------------------ |
+| Konum           | Çanakkale, Türkiye |
+| Dönem           | 2000–2025          |
+| Gözlem sayısı   | 312 aylık gözlem   |
+| Değişkenler     | Sıcaklık, Yağış    |
+| Sıcaklık birimi | °C                 |
+| Yağış birimi    | mm                 |
 
 ---
 
 ## 🛠️ Kullanılan Teknolojiler
 
 * **Python**
-* **Pandas** – Veri işleme ve analiz
+* **Pandas** – Veri işleme
 * **NumPy** – Sayısal hesaplamalar
-* **Xarray** – NetCDF iklim verilerinin işlenmesi
+* **Xarray** – NetCDF veri işleme
 * **Matplotlib** – Veri görselleştirme
-* **SciPy** – İstatistiksel testler
-* **Copernicus / ERA5-Land** – İklim verileri
+* **SciPy** – İstatistiksel analiz
+* **ERA5-Land** – İklim verisi
 
 ---
 
 ## 🔎 Yapılan Analizler
 
-### Tanımlayıcı İstatistikler
-
-Sıcaklık ve yağış değişkenleri için:
-
-* Ortalama
-* Medyan
-* Standart sapma
-* Minimum
-* Maksimum
-
-değerleri hesaplanmıştır.
-
-### 📈 Trend Analizi
-
-Yıllık sıcaklık ve yağış değerlerinin zaman içerisindeki değişimi doğrusal regresyon kullanılarak incelenmiştir.
-
-**Sıcaklık:**
-
-* Trend eğimi: **+0.0504 °C/yıl**
-* Yaklaşık değişim: **+0.504 °C/on yıl**
-* R²: **0.4158**
-* p-değeri: **0.0004**
-
-Bu sonuç, incelenen dönem içerisinde sıcaklıkta istatistiksel olarak anlamlı bir artış eğilimi olduğunu göstermektedir.
-
-**Yağış:**
-
-* Trend eğimi: **−3.014 mm/yıl**
-* Yaklaşık değişim: **−30.14 mm/on yıl**
-* R²: **0.0231**
-* p-değeri: **0.4581**
-
-Yağışta azalış yönünde bir eğilim görülmesine rağmen bu trend istatistiksel olarak anlamlı değildir.
+* Tanımlayıcı istatistikler
+* Yıllık sıcaklık ve yağış analizi
+* Doğrusal trend analizi
+* Mevsimsel trend analizi
+* 5 yıllık hareketli ortalama
+* Pearson korelasyon analizi
+* IQR ile aykırı değer analizi
+* Boxplot analizi
 
 ---
 
-## 🌡️ Sıcaklık Analizi
+## 📈 Önemli Bulgular
 
-2000–2025 dönemindeki genel sıcaklık istatistikleri:
+### 🌡️ Sıcaklık
 
 | İstatistik     |    Değer |
 | -------------- | -------: |
@@ -88,13 +60,16 @@ Yağışta azalış yönünde bir eğilim görülmesine rağmen bu trend istatis
 | Minimum        |  2.20 °C |
 | Maksimum       | 27.98 °C |
 
-5 yıllık hareketli ortalama analizi, dönem içerisinde sıcaklıkların genel olarak yükselen bir eğilim gösterdiğini ortaya koymaktadır.
+**Sıcaklık trendi:**
 
----
+* Eğimi: **+0.0504 °C/yıl**
+* Değişim: **+0.504 °C/on yıl**
+* R²: **0.4158**
+* p-değeri: **0.0004**
 
-## 🌧️ Yağış Analizi
+Sonuç olarak sıcaklıklarda **istatistiksel olarak anlamlı bir artış eğilimi** bulunmuştur.
 
-Yağış için hesaplanan temel istatistikler:
+### 🌧️ Yağış
 
 | İstatistik     |     Değer |
 | -------------- | --------: |
@@ -104,11 +79,16 @@ Yağış için hesaplanan temel istatistikler:
 | Minimum        |   0.33 mm |
 | Maksimum       | 298.32 mm |
 
-Yağış değişkeninde özellikle **2010 yılı** belirgin bir aykırı değer olarak öne çıkmaktadır.
+**Yağış trendi:**
 
----
+* Eğimi: **−3.014 mm/yıl**
+* Değişim: **−30.14 mm/on yıl**
+* R²: **0.0231**
+* p-değeri: **0.4581**
 
-## 🍂 Mevsimsel Analiz
+Yağışta azalış yönünde eğilim görülmesine rağmen trend **istatistiksel olarak anlamlı değildir**.
+
+### 🍂 Mevsimsel Analiz
 
 | Mevsim   | Ortalama Sıcaklık | Ortalama Yağış |
 | -------- | ----------------: | -------------: |
@@ -117,44 +97,32 @@ Yağış değişkeninde özellikle **2010 yılı** belirgin bir aykırı değer 
 | Yaz      |          25.00 °C |       14.51 mm |
 | Sonbahar |          17.05 °C |       55.50 mm |
 
-Mevsimsel trend analizinde özellikle **kış ve sonbahar sıcaklıklarında anlamlı artış eğilimleri** görülmüştür.
+Anlamlı sıcaklık trendleri:
 
-* Kış sıcaklık trendi: **+0.0866 °C/yıl**, p = 0.0011
-* Sonbahar sıcaklık trendi: **+0.0616 °C/yıl**, p = 0.0093
+* **Kış:** +0.0866 °C/yıl, p = 0.0011
+* **Sonbahar:** +0.0616 °C/yıl, p = 0.0093
 
----
+### 📉 Korelasyon
 
-## 📉 Korelasyon Analizi
+Sıcaklık ve yağış arasındaki Pearson korelasyonu:
 
-Sıcaklık ve yağış arasındaki Pearson korelasyon katsayısı:
+**r = −0.0169, p = 0.9348**
 
-**r = −0.0169**
+Sonuç, iki değişken arasında **istatistiksel olarak anlamlı doğrusal ilişki bulunmadığını** göstermektedir.
 
-**p = 0.9348**
+2010 yılı çıkarıldığında:
 
-Bu sonuç, incelenen veri setinde sıcaklık ile yağış arasında anlamlı bir doğrusal ilişki bulunmadığını göstermektedir.
+**r = −0.1456, p = 0.4873**
 
-2010 yılındaki yağış aykırı değeri çıkarıldığında korelasyon:
+Sonuç yine anlamlı değildir.
 
-**r = −0.1456**, p = 0.4873
+### 📌 Aykırı Değer
 
-olmuştur. Bu durumda da istatistiksel olarak anlamlı bir ilişki bulunmamıştır.
-
----
-
-## 📌 Aykırı Değer Analizi
-
-Yağış değişkeni için IQR yöntemi kullanılmıştır.
-
-2010 yılı yağış değeri belirlenen üst sınırın üzerinde olduğu için **aykırı gözlem** olarak tespit edilmiştir.
-
-Sıcaklık değişkeninde IQR yöntemine göre belirgin bir aykırı değer bulunmamıştır.
+IQR yöntemi sonucunda **2010 yılı yağış değeri aykırı gözlem** olarak belirlenmiştir.
 
 ---
 
 ## 📊 Görselleştirmeler
-
-Projede aşağıdaki grafikler oluşturulmuştur:
 
 ### Yıllık Sıcaklık
 
@@ -222,6 +190,7 @@ Turkiye_Iklim_Analizi/
 │   ├── veri_incele.py
 │   └── veri_indir.py
 │
+├── .gitignore
 └── README.md
 ```
 
@@ -229,11 +198,11 @@ Turkiye_Iklim_Analizi/
 
 ## 🎯 Sonuç
 
-2000–2025 dönemine ait Çanakkale iklim verilerinin incelenmesi sonucunda sıcaklıklarda **istatistiksel olarak anlamlı bir artış eğilimi** tespit edilmiştir.
+2000–2025 döneminde Çanakkale'de sıcaklıkların **istatistiksel olarak anlamlı şekilde arttığı**, yağışlarda ise **istatistiksel olarak anlamlı olmayan bir azalış eğilimi** olduğu görülmüştür.
 
-Yağış miktarında azalış yönünde bir eğilim gözlenmesine rağmen bu değişim istatistiksel olarak anlamlı değildir. Mevsimsel analizler ise özellikle kış ve sonbahar sıcaklıklarında belirgin artışlar olduğunu göstermektedir.
+Mevsimsel analizlerde özellikle **kış ve sonbahar sıcaklıklarında anlamlı artışlar** tespit edilmiştir.
 
-Bu çalışma, Python kullanılarak gerçek iklim verileri üzerinde **veri temizleme, istatistiksel analiz, trend analizi, hipotez testi ve veri görselleştirme** süreçlerinin uygulanmasını içeren bir veri analizi projesidir.
+Bu proje, Python kullanılarak gerçek iklim verileri üzerinde **istatistiksel analiz, trend analizi, hipotez testi, korelasyon, aykırı değer analizi ve veri görselleştirme** uygulamalarını içermektedir.
 
 ---
 
@@ -241,6 +210,4 @@ Bu çalışma, Python kullanılarak gerçek iklim verileri üzerinde **veri temi
 
 **Ahmet Ünlü**
 
-İstatistik Öğrencisi | Veri Analizi ve Veri Bilimi
-
-GitHub: [@ahmetunlu68](https://github.com/ahmetunlu68)
+**İstatistik Öğrencisi | Veri Analizi ve Veri Bilimi**
